@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="__LAYUI__/css/layui.css"  media="all">
+  <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<style type="text/css">
+	.touxiang{
+		width: 40px;
+	    height: 40px;
+	    border-radius: 70px;
+	}
+	.touxiangUl li{
+		float: left;
+		margin-left: 10px;
+		
+	    
+	}
+	.hoverClass{
+		border: 1px solid #37696b;
+	}
+	.okPng{
+		width: 15px;position: absolute;left: 240px;
+		display: none;
+	}
+</style>
+<body>
+	<div class="layui-tab">
+	  <ul class="layui-tab-title">
+	    <li class="layui-this">登录</li>
+	    <li>注册</li>
+	  </ul>
+	  <div class="layui-tab-content">
+	    <div class="layui-tab-item layui-show">
+	      	<form class="layui-form" action="">
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">用户名:</label>
+			    <div class="layui-input-block">
+			      <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">密码:</label>
+			    <div class="layui-input-block">
+			      <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <div class="layui-input-block">
+			      <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+			      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+			    </div>
+			  </div>
+			</form>
+	    </div>
+	    <div class="layui-tab-item">
+	    	<form class="layui-form" action="">
+	    	  <div class="layui-form-item" style="height: 41px;">
+			    <label class="layui-form-label">选择头像:</label>
+			    <div class="layui-input-block">
+			      <ul class="touxiangUl">
+			      	<li><img class="touxiang layui-icon-ok" src="__IMAGES__/3.png"></li>
+			      	<li><img class="touxiang" src="__IMAGES__/3.png"></li>
+			      	<li><img class="touxiang" src="__IMAGES__/3.png"></li>
+			      	<li><img class="touxiang" src="__IMAGES__/3.png"></li>
+			      	<li><img class="touxiang" src="__IMAGES__/3.png"></li>
+			      	<li><img class="touxiang" src="__IMAGES__/3.png"></li>
+			      </ul>
+			      <img class="okPng" src="__IMAGES__/ok.png">
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">用户名:</label>
+			    <div class="layui-input-block">
+			      <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">密码:</label>
+			    <div class="layui-input-block">
+			      <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <div class="layui-input-block">
+			      <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+			      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+			    </div>
+			  </div>
+			</form>
+	    </div>
+
+	  </div>
+	</div>
+
+               
+          
+
+
+</body>
+<script type="text/javascript" src="__JS__/jquery-2.1.1.min.js"></script>
+<script src="__LAYUI__/layui.all.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+;!function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  
+  //日期
+  laydate.render({
+    elem: '#date'
+  });
+  laydate.render({
+    elem: '#date1'
+  });
+  
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+  
+}();
+
+//头像鼠标移动上去的hover事件
+$("ul.touxiangUl").find("li").bind("mouseover",function(){
+	$(this).addClass("hoverClass");
+}).bind("mouseout",function(){
+	$(this).removeClass("hoverClass");
+}).bind("click",function(){
+	var index=$(this).closest("ul").find("li").index($(this));
+	if(index<1){
+		var left=40;
+	}else{
+		var left=40+50*index;
+	}
+	$("img.okPng").css("left",left+"px");
+	$("img.okPng").show();
+})
+
+</script> 
+</html>
